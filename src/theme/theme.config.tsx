@@ -7,6 +7,8 @@ import { SidebarTitle } from '../components/Sidebar'
 import { GobletIcon } from '../components/GobletIcon'
 
 const config:DocsThemeConfig = {
+  logo: Logo,
+  head: Head,
   darkMode: true,
   // primaryHue: `#785B9C`,
   docsRepositoryBase: `https://github.com/GobletQA/goblet-docs`,
@@ -22,9 +24,7 @@ const config:DocsThemeConfig = {
   footer: {
     text: FooterText,
   },
-  logo: Logo,
   logoLink: `https://dev.gobletqa.app/docs`,
-  head: Head,
   sidebar: {
     toggleButton: true,
     defaultMenuCollapseLevel: 1,
@@ -40,6 +40,11 @@ const config:DocsThemeConfig = {
       )
     }
   },
+  useNextSeoProps() {
+    return {
+      titleTemplate: `%s | GobletQA`
+    }
+  }
 }
 
 export default config

@@ -1,0 +1,6 @@
+{
+  "cicd": "CI/CD Configuration",
+  "goblet-config": "Goblet Config",
+  "integrations": "3rd Party Integrations",
+  "custom-steps": "Custom Step Definitions"
+}
