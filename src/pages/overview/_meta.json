@@ -1,5 +1,10 @@
 {
+  "architecture": "Architecture",
+  "auth": "Authentication",
+  "git-provider": "Git Cloud Providers",
   "conductor": "Conductor",
+  "session-container": "Session Container",
   "mounted-repo": "Mounted Repo",
-  "reports": "Reports"
+  "goblet-folder": "Goblet Folder",
+  "artifacts": "Artifacts"
 }
