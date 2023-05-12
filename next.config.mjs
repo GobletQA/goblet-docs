@@ -16,6 +16,7 @@ const withNextra = nextra({
 export default withNextra({
   distDir: './.next',
   reactStrictMode: true,
-  redirects: () => [
-  ]
+  images: {
+    unoptimized: true
+  },
 })

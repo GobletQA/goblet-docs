@@ -3,9 +3,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "gh": "pnpm clean && pnpm build && pnpm export && pnpm nojekyll && pnpm pages",
     "build": "next build",
-    "clean": "rm -rf .next .turbo ./node_modules",
+    "clean": "rm -rf .next .turbo",
+    "clean:full": "pnpm clean && rm -rf  ./node_modules",
     "debug": "NODE_OPTIONS='--inspect' next dev",
+    "export": "next export -o build",
+    "nojekyll": "cp .nojekyll build/.nojekyll",
+    "pages": "gh-pages -d build",
     "start": "next"
   },
   "dependencies": {
