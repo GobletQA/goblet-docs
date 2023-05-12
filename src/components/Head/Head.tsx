@@ -17,7 +17,6 @@ export const Head = () => {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:url" content={`https://dev.gobletqa.app/docs/${asPath}`} />
     </>
   )
 }

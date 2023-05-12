@@ -10,7 +10,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "export": "next export -o build",
     "nojekyll": "cp .nojekyll build/.nojekyll",
-    "pages": "gh-pages -d build",
+    "pages": "gh-pages -d build -t",
     "start": "next"
   },
   "dependencies": {

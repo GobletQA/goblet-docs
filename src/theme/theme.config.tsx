@@ -22,7 +22,7 @@ const config:DocsThemeConfig = {
   footer: {
     text: FooterText,
   },
-  logoLink: `https://dev.gobletqa.app/docs`,
+  logoLink: `https://goblet-docs.vercel.app`,
   sidebar: {
     toggleButton: true,
     defaultMenuCollapseLevel: 1,
