@@ -1,1 +1,21 @@
-# Custom Step Definitions
+# Writing a Custom Step Definitions
+
+Writing Custom Step Definitions
+
+In addition to the predefined step definitions provided by the GobletQA Platform, you have the flexibility to create your own custom step definitions. These custom step definitions allow you to extend the functionality of the platform and tailor it to your specific testing or automation requirements. Follow the steps below to write custom step definitions within the GobletQA Platform:
+
+Identify the Need: Determine the specific functionality or action that is not covered by the existing predefined step definitions. Analyze the requirements of your tests or automation scenarios to identify the areas where custom step definitions can be useful.
+
+Choose the Language: The GobletQA Platform supports custom step definitions written in JavaScript or TypeScript. Decide which language you prefer to use based on your familiarity and requirements.
+
+Create a Step Definitions File: Within the repository and branch where you want to use the custom step definitions, create a new file specifically for your step definitions. Name the file descriptively, such as custom-steps.js or custom-steps.ts, depending on the chosen language.
+
+Define Step Definitions: Start by writing the necessary code to define your custom step definitions. Each step definition consists of a regular expression or a string pattern and a corresponding function or method that executes the desired action. The regular expression or string pattern matches the step in your feature file, and the associated function or method contains the logic to perform the action.
+
+Access Platform Functionality: Within your custom step definitions, you can leverage the functionality provided by the GobletQA Platform, such as making API calls, automating browsers using the Playwright framework, executing scripts or functions, and more. Utilize the appropriate platform APIs and libraries to achieve the desired behavior.
+
+Reusing Existing Step Definitions: If your custom step definitions require reusing functionality from the predefined step definitions, you can incorporate them by calling the relevant predefined step definitions within your custom definitions. This allows you to build upon the existing functionality and create more complex test or automation scenarios.
+
+Save and Commit: Once you have written your custom step definitions, save the file and commit the changes using the Git integration provided by the GobletQA Platform. This ensures that your custom step definitions are included in the repository and can be utilized within your feature files.
+
+By following these steps, you can create custom step definitions within the GobletQA Platform to extend its functionality and meet your specific testing or automation requirements. Custom step definitions empower you to tailor the platform to your needs, providing greater flexibility and versatility in defining the behavior of your tests or automation scenarios.

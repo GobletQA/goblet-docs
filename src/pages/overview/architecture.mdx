@@ -1,2 +1,33 @@
 # Architecture
 
+
+The architecture of the GobletQA Platform is designed to provide a robust and secure environment for creating and executing tests. This section provides an overview of the key components and technologies involved in the platform's architecture.
+
+## Components of the GobletQA Platform
+
+Cloud Infrastructure: The GobletQA Platform runs on cloud infrastructure, leveraging the scalability and flexibility of cloud computing services. This allows for seamless management of resources and ensures high availability of the platform.
+
+Session Container: When a user logs into the GobletQA Platform, a session container is created for them. The session container is a short-lived virtual machine that runs in the cloud and is tightly coupled with the user's active session. It serves as an isolated execution environment for the user's tests and automation.
+
+Feature Files: The core building blocks of the GobletQA Platform are feature files written in the Gherkin syntax. These files define the test scenarios, including the steps to be executed and the expected outcomes. Feature files are stored within the user's selected repository and are responsible for driving the execution of tests.
+
+Step Definitions: Step definitions provide the implementation details for the steps specified in the feature files. The GobletQA Platform includes a set of predefined step definitions that cover various areas such as API calls, browser automation, and script execution. Users can also create their own custom step definitions to extend the functionality of the platform.
+
+Git Integration: The GobletQA Platform integrates with supported Git providers, such as GitHub and GitLab, for authentication and repository management. Users authenticate with their Git provider, granting permission for the platform to access their repositories. The platform utilizes authentication tokens and APIs provided by the Git provider to synchronize repository changes.
+
+Proxy: To ensure security and controlled access, all requests to the session container are routed through a proxy. The proxy validates each request using JWT (JSON Web Token) authentication generated from the user's encrypted authentication token received during sign-in. This adds an additional layer of protection against unauthorized access to the session container.
+
+Playwright for Browser Automation: When creating feature files that automate web browsers, the GobletQA Platform utilizes the Playwright framework. Playwright allows full interaction with the browser, enabling actions such as clicking, scrolling, dragging, DOM manipulation, and more. It ensures reliable and comprehensive browser automation capabilities for the platform.
+
+Kubernetes and Docker: For executing user-supplied scripts or functions, the GobletQA Platform utilizes Kubernetes and Docker to create isolated virtual machines. These virtual machines provide a secure environment for executing custom code, ensuring that scripts run independently and do not impact the overall platform stability.
+
+Security Measures
+
+The GobletQA Platform incorporates several security measures to protect user data and ensure a secure testing environment:
+
+The session containers are never publicly exposed. All access to them must go through the authenticated proxy, which validates each request using JWT authentication.
+User authentication tokens are encrypted and securely stored.
+Session containers authenticate requests using JWT authentication, even after passing through the proxy, adding an extra layer of protection.
+JWT tokens have a limited lifespan, expiring after one hour, upon user sign-out, or after a period of inactivity.
+When a user session ends, the session container is automatically shut down and removed, ensuring that all traces of the container, including cloned repository files, are permanently deleted.
+The architecture of the GobletQA Platform is designed with security, scalability, and flexibility in mind, enabling users to create and execute tests in a reliable and protected environment. In the following sections, we will explore the various integrations and functionalities provided by the platform to enhance the testing experience.
