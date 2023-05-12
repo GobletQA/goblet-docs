@@ -1,55 +1,7 @@
-# Conductor
+import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
+import { PurpleText } from '../../components/Text/Text'
 
-Manages session containers for each connected user
+# <PurpleText>Conductor</PurpleText>
 
-## Running Containers
-
-* Conductor calls it's controller
-* Controller handles running the container based on passed in params
-* Once started, it generates urls for accessing the container through the Conductor proxy
-* Urls are returned as response to initial request
-* Controller listens to docker events
-  * On container `start` event, it captures container data and stores it in container cache
-  * This allow multiple instances of conductor to proxy requests to a container
-* **REQUIRED** - All conductor instances **MUST** listen to the **SAME** docker api
-  * If listening to different docker apis, then the same container events will no be picked up
-
-## Container Access
-
-* On request to access container via the proxy
-  * The container url is looked up via the container cache
-* If found, requests are forwarded to the container url
-
-## User Flow
-
-## LogIn
-
-1. On page load
-   1. If user not logged, show modal to log in
-   2. If user has existing log in, go to next step
-2. Once user is logged in, FE makes a repo status request to backend
-3.  Backend makes api call to Conductor
-4. Conductor spins up new container, and returns urls to Backend
-   1. Uses side container that's running docker with the docker API exposed to conductor
-   2. Makes calls to docker API to spawn new containers
-   3. Listens to docker events to hydrate both existing and newly spawned containers
-5. Backend saves urls in session token and returns to Frontend
-6. For all Frontend requests to Backend it must always includes the session token with the URLs
-7.  Backend then proxies calls to Conductor based on urls in the session token
-   1. Requests that access the shared Repo Class, Goblet FileSystem, and Workflow are forwarded
-
-
-
-# Conductor Module
-
-The Conductor module is a crucial backend component of the GobletQA Platform that serves as an intermediary between the proxy and the Kubernetes API. It plays a vital role in managing the lifecycle of the session container, enabling secure connections and efficient resource management. Here are the key responsibilities and functions of the Conductor module:
-
-Session Container Management: The Conductor module is responsible for starting and stopping the session container based on the user's active session. It ensures that each user has only one active session at a time and, consequently, only one associated session container. By managing the lifecycle of the session container, it allows users to work within a controlled and isolated environment.
-
-Connection Information Provision: Conductor provides the necessary connection information to the proxy component. This information includes details about how to establish a connection with the session container. By sharing the connection information, Conductor enables the proxy to route requests and establish secure communication channels between the frontend and the session container.
-
-Websocket Initialization: The Conductor module initializes the websocket connection between the proxy and the session container. This websocket connection facilitates the integration of the Virtual Network Computing (VNC) server with the noVNC frontend. By establishing this connection, users can interact with the fully interactive web browser displayed within their own browser, closely observing the execution of tests and automation.
-
-Kubernetes Event Listening: Conductor continuously listens to Kubernetes events to effectively manage the session container. It monitors changes in the Kubernetes environment, ensuring the proper management of pods and containers. By staying updated on Kubernetes events, Conductor maintains the stability and availability of the resources required for the session container.
-
-The Conductor module acts as a critical coordinator, bridging the gap between the frontend, the proxy, and the Kubernetes infrastructure. By managing the session container, providing connection information, initializing websockets, and monitoring Kubernetes events, Conductor ensures a seamless and secure experience for users within the GobletQA Platform.
+<br/>
+<ComingSoon />

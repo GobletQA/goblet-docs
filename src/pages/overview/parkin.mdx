@@ -1,19 +1,8 @@
-# Parkin
+import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
+import { PurpleText } from '../../components/Text/Text'
 
-[Parkin](https://github.com/lancetipton/parkin) is an engine used within the GobletQA Platform that plays a crucial role in parsing and manipulating feature files. It utilizes a number intuitive techniques to process and convert feature files into an Abstract Syntax Tree (AST), which enables seamless modification and manipulation.
+# <PurpleText>Parkin</PurpleText>
 
-## Key features and capabilities of Parkin:
+<br/>
+<ComingSoon />
 
-Gherkin Syntax Understanding: The Parkin Engine fully understands the Gherkin syntax, the standard language for defining behavior-driven development (BDD) scenarios. It comprehends the structure and semantics of Gherkin feature files, allowing for accurate parsing and interpretation of their contents.
-
-Custom DSL: The engine extends the Gherkin syntax by introducing a custom Domain-Specific Language (DSL). This DSL enables the definition of custom expressions that can be used in both feature steps and step definitions. With this capability, users can create dynamic aliases, link to other features, scenarios, steps, expressions, or step definitions. The custom DSL empowers users to add powerful and flexible logic to their feature files.
-
-World Object: Parkin Engine introduces a concept called the "world object" that can be utilized within step definitions. The world object serves as a repository for storing aliases, predefined data, and other contextual information. It enables the sharing and retrieval of previously defined state, dynamically generated aliases, and the existing execution context within step definitions. This feature enhances the flexibility and accessibility of data across different steps and scenarios.
-
-Real-Time Loading of Step Definitions: The engine dynamically loads and utilizes step definitions in real time, matching them to the steps defined in the feature files. This dynamic loading ensures that the latest versions of step definitions are always available for execution. By parsing the step definitions into an AST, the engine extracts metadata about them, enabling enhanced interactions between the engine and the associated features.
-
-Integration with Jest and Playwright: The Parkin Engine seamlessly integrates with the Jest testing framework and the Playwright automation library. This integration allows the execution of scenarios and steps from feature files either sequentially or in parallel. The engine can pause and resume feature execution, providing enhanced debugging and troubleshooting capabilities during testing and automation.
-
-Feature Auditing: The engine includes an auditing feature to ensure the integrity of feature files. It performs comprehensive checks to identify errors and inconsistencies within the feature files. This auditing process verifies that all steps in the feature file have corresponding step definitions, preventing potential issues and improving the overall quality of the tests.
-
-The Parkin Engine serves as the backbone of the GobletQA Platform, providing powerful capabilities to parse, manipulate, and execute feature files. Its ability to understand the Gherkin syntax, custom DSL, dynamic step definition loading, integration with testing frameworks, and auditing functionality make it a fundamental component that ties all the other features together, enabling efficient and effective testing and automation workflows within the GobletQA Platform.

@@ -1,24 +1,7 @@
-# Session Container
+import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
+import { PurpleText } from '../../components/Text/Text'
 
+# <PurpleText>Session Container</PurpleText>
 
-The session container is a fundamental component of the GobletQA Platform, providing an isolated execution environment for users' tests and automation. This section details the purpose and functionality of the session container within the platform.
-
-Purpose of the Session Container
-
-Isolation and Security: The session container offers a controlled and isolated environment for executing tests and automation. It ensures that each user's session operates independently, preventing interference between different users' activities and maintaining the security and integrity of their code.
-
-Resource Management: By utilizing session containers, the GobletQA Platform effectively manages computing resources. Each session container is created on-demand when a user logs into the platform and is terminated when the session ends. This approach optimizes resource utilization and ensures efficient scaling based on user demand.
-
-Repository Cloning and Checkout: Upon starting a session container, it initiates the cloning process of the user's selected repository using the git clone command. The container then checks out the specified branch, allowing users to work with their preferred codebase and branch.
-
-Session Container Functionality
-
-Repository Scanning: Once the repository is cloned within the session container, it recursively scans the repository to locate the goblet folder and the goblet.config.js configuration file. If these files are not found, the platform automatically creates them within the repository. The goblet folder serves as the home for feature files and related assets, while the goblet.config.js file provides configuration options for the platform.
-
-File Watching Process: The session container initiates a file watching process that continuously monitors changes within the cloned repository. Whenever a file is modified, added, or deleted, the process detects the change and triggers the creation of a new Git commit. The commit is then pushed to the remote branch hosted by the Git provider, ensuring that the changes are saved and version-controlled.
-
-Real-Time Feedback Loop: The session container enables a real-time feedback loop for users. As they write and modify code, execute tests, or perform browser automation, the platform leverages a proprietary read-eval-print loop (REPL) to execute the code and display the outcome in real time. This feedback loop allows users to interactively validate their code, tests, and automation, providing immediate visibility into their work.
-
-Automatic Shutdown and Cleanup: When a user session ends, either through user sign-out or session expiration, the session container is automatically shut down and removed. This ensures that all traces of the container, including cloned repository files and any temporary artifacts, are permanently deleted. The automatic cleanup process enhances security and privacy by preventing any residual data from being retained.
-
-The session container, with its isolation, resource management, and real-time feedback capabilities, forms the foundation for users to seamlessly create, modify, and execute their tests and automation within the GobletQA Platform. The subsequent sections will delve into the specific functionalities and integrations that empower users to leverage the platform's testing capabilities effectively.
+<br/>
+<ComingSoon />

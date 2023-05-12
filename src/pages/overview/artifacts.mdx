@@ -1,46 +1,7 @@
-# Reports
+import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
+import { PurpleText } from '../../components/Text/Text'
 
-## Notes
-* Reports should not be depended on other file types ( first class citizens )
-* Can be related to other files, but not depend
+# <PurpleText>Artifacts</PurpleText>
 
-## Flows
-### Sidebar Results File 
-
-* When a Results file is selected from the sidebar
-  * Action should be called to set the results file active for the results screen
-  * Action should run before the results screen is loaded
-### Switch to Results Screen
-
-* On screen other then Results Screen, and switching to the results screen
-  * Action should be called that does the following
-    * Should find the most recent results file for active file of that screen
-    * It should then be set as the active file of the results screen 
-    * This should happen before the results screen loads
-  * If no results files exist
-    * Display message with relevant information
-### On Test Run
-
-* When tests are running, and switching to Results Screen
-  * Should display a loading indicator that the rests are running
-  * Once the tests finish, the Results file of that test run should display
-
-
-
-## Artifacts
-
-In the context of the GobletQA Platform, artifacts refer to the outputs or artifacts generated during the execution of tests and automation. These artifacts are valuable resources that provide insights, documentation, and evidence of the testing and automation activities. Let's explore the various types of artifacts produced by the GobletQA Platform:
-
-Test Reports: The GobletQA Platform generates detailed test reports that document the results of test executions. These reports provide a comprehensive overview of the tests that were performed, including the test outcomes (pass/fail), any errors or failures encountered, and relevant metrics and statistics. Test reports are essential for understanding the test results, tracking progress, and identifying areas that require attention or further investigation.
-
-Code Coverage Reports: Code coverage reports provide information about the extent to which your code is covered by tests. The GobletQA Platform integrates with code coverage analysis tools to generate reports that highlight which parts of your codebase were executed during the testing process. These reports help you assess the effectiveness of your test suite and identify areas of your code that may require additional testing.
-
-Automation Logs: During the execution of automation workflows, the GobletQA Platform generates detailed logs that capture the steps performed, any actions taken, and the corresponding outcomes. These logs provide a chronological record of the automation process, allowing you to trace the execution flow and investigate any issues or unexpected behavior. Automation logs are valuable for troubleshooting and debugging purposes.
-
-Screenshots and Videos: The GobletQA Platform allows you to capture screenshots or record videos of the test execution or automation process. Screenshots are useful for visually documenting the state of the application at specific points in time, capturing potential UI issues or anomalies. Videos provide a more comprehensive recording of the entire test or automation workflow, enabling you to replay and review the execution for analysis or debugging purposes.
-
-Custom Artifacts: Depending on your specific testing or automation requirements, you may generate custom artifacts as part of your workflows. These can include log files, performance reports, network traffic captures, or any other files or documents that provide additional insights into the behavior or performance of your application. The GobletQA Platform supports the inclusion and management of these custom artifacts.
-
-The GobletQA Platform facilitates the management and accessibility of artifacts by providing features such as artifact storage, retrieval, and organization. You can easily access and download artifacts generated during the testing and automation processes, share them with team members or stakeholders, or integrate them into your existing documentation or reporting workflows.
-
-Artifacts play a crucial role in ensuring traceability, collaboration, and documentation throughout the testing and automation lifecycle. The GobletQA Platform empowers you to generate and utilize artifacts effectively, enabling better analysis, troubleshooting, and communication surrounding your testing and automation efforts.
+<br/>
+<ComingSoon />

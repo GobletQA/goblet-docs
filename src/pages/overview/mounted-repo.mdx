@@ -1,48 +1,8 @@
-# Mounted Repo
+import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
+import { PurpleText } from '../../components/Text/Text'
 
+# <PurpleText>Mounted Repo</PurpleText>
 
-### Frontend
-
-* Pull repo from local storage if it exists
-* Clear out local storage
-  * At this point we don't know if the repo is still mounted, even if in local storage
-  * So we check and try to load the repo if it exists
-  * But if it doesn't then we have to re-connect, so local storage is no longer valid
-* Call backend api repoStatus
-  * Pass in the repo when making backend api call
-* Handel response from backend based on returned data
-  * If not mounted
-    * In vnc mode, then show git connect modal
-    * In local mode, then show empty project modal
-  * If mounted
-    * repo data should be returned in the response, so save it to the store
-
-## Backend
-
-* On all to repoStatus endpoint
-
-
-
-
-
-In the GobletQA Platform, a cloned repository refers to a local copy of a Git repository that is created within the session container. When working with the GobletQA Platform, understanding the concept of a cloned repository is essential. Here's what you need to know:
-
-Repository Cloning: When you select a repository and branch within the GobletQA Platform, a session container is started, and the platform automatically clones the selected repository using the git clone command. This process creates a local copy of the repository within the session container.
-
-Branch Selection: Along with repository cloning, the platform ensures that the selected branch is checked out within the cloned repository. This allows you to work with the specific branch and make changes or additions as needed.
-
-Folder and Configuration Search: Once the repository is cloned, the GobletQA Platform recursively scans the cloned repository for a goblet folder and a goblet.config.js configuration file, starting from the root directory. If these files are not found, the platform automatically creates them within the repository. The goblet.config.js file contains configuration settings for the GobletQA Platform, allowing you to customize its behavior.
-
-File Watching Process: The GobletQA Platform initiates a file watching process within the cloned repository. This process constantly monitors for any changes made to files within the repository.
-
-Automated Commit and Push: When a file is modified or added within the cloned repository, the file watching process detects the changes and automatically creates a new git commit. The GobletQA Platform utilizes the Git CLI to commit and push the changes to the remote branch hosted by the Git cloud provider. This ensures that your modifications are saved and visible to you and your team members.
-
-Security and Isolation: The cloned repository exists within the session container, which is a short-lived virtual machine running in the cloud. It is isolated from other sessions and provides a secure environment for your testing and automation activities. The session container is not publicly exposed and can only be accessed through a proxy, which validates requests using JWT authentication.
-
-Session Container Lifespan: The session container and the associated cloned repository exist as long as your active session within the GobletQA Platform. When you end your session by signing out or if the session expires, the session container is automatically shutdown and removed. All traces of the container, including the cloned repository files, are permanently deleted. This ensures the security and privacy of your code.
-
-Understanding the concept of a cloned repository within the GobletQA Platform is crucial for managing your code, making changes, and collaborating with your team members. The platform's automatic cloning process, file watching, and automated commit and push mechanisms simplify version control and ensure that your modifications are seamlessly synchronized with the remote repository.
-
-
-
+<br/>
+<ComingSoon />
 
