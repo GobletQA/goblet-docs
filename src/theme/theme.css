@@ -1,0 +1,36 @@
+
+a {
+  text-decoration-line: none !important;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+.gb-message {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+}
+
+.gb-message .gb-text {
+  margin-left: 5px;
+}
+
+.nextra-callout.nx-bg-blue-100 { 
+  display: flex;
+  align-items: center;
+}
+
+.nextra-breadcrumb {
+  margin-bottom: 20px;
+}
+
+.icon-inline {
+  display: inline;
+}
+
+.icon-inline svg {
+  display: inline;
+  margin-right: 5px;
+}

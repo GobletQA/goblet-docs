@@ -166,58 +166,6 @@ export const gray = {
 }
 
 
-/**
- * TODO: Autogenerate these values
- */
-export const fade = {
-  fadeLight00: `rgba(255,255,255, 0)`,
-  fadeLight05: `rgba(255,255,255, 0.05)`,
-  fadeLight10: `rgba(255,255,255, 0.10)`,
-  fadeLight15: `rgba(255,255,255, 0.15)`,
-  fadeLight20: `rgba(255,255,255, 0.20)`,
-  fadeLight25: `rgba(255,255,255, 0.25)`,
-  fadeLight30: `rgba(255,255,255, 0.30)`,
-  fadeLight35: `rgba(255,255,255, 0.35)`,
-  fadeLight40: `rgba(255,255,255, 0.40)`,
-  fadeLight45: `rgba(255,255,255, 0.45)`,
-  fadeLight50: `rgba(255,255,255, 0.50)`,
-  fadeLight55: `rgba(255,255,255, 0.55)`,
-  fadeLight60: `rgba(255,255,255, 0.60)`,
-  fadeLight65: `rgba(255,255,255, 0.65)`,
-  fadeLight70: `rgba(255,255,255, 0.70)`,
-  fadeLight75: `rgba(255,255,255, 0.75)`,
-  fadeLight80: `rgba(255,255,255, 0.80)`,
-  fadeLight85: `rgba(255,255,255, 0.85)`,
-  fadeLight90: `rgba(255,255,255, 0.90)`,
-  fadeLight95: `rgba(255,255,255, 0.95)`,
-}
-
-/**
- * TODO: Autogenerate these values
- */
-export const fadeDark = {
-  fadeDark00: `rgba(0,0,0, 0)`,
-  fadeDark05: `rgba(0,0,0, 0.05)`,
-  fadeDark10: `rgba(0,0,0, 0.10)`,
-  fadeDark15: `rgba(0,0,0, 0.15)`,
-  fadeDark20: `rgba(0,0,0, 0.20)`,
-  fadeDark25: `rgba(0,0,0, 0.25)`,
-  fadeDark30: `rgba(0,0,0, 0.30)`,
-  fadeDark35: `rgba(0,0,0, 0.35)`,
-  fadeDark40: `rgba(0,0,0, 0.40)`,
-  fadeDark45: `rgba(0,0,0, 0.45)`,
-  fadeDark50: `rgba(0,0,0, 0.50)`,
-  fadeDark55: `rgba(0,0,0, 0.55)`,
-  fadeDark60: `rgba(0,0,0, 0.60)`,
-  fadeDark65: `rgba(0,0,0, 0.65)`,
-  fadeDark70: `rgba(0,0,0, 0.70)`,
-  fadeDark75: `rgba(0,0,0, 0.75)`,
-  fadeDark80: `rgba(0,0,0, 0.80)`,
-  fadeDark85: `rgba(0,0,0, 0.85)`,
-  fadeDark90: `rgba(0,0,0, 0.90)`,
-  fadeDark95: `rgba(0,0,0, 0.95)`,
-}
-
 export const alerts = {
   info: black.black03,
   error: gobletColors.cardinal,
@@ -231,30 +179,7 @@ export const alerts = {
  */
  export const editor = {
   lightEditor: {
-    red: `#DD0000`,
-    redLight: `#CD3131`,
-    redPastel: `A31515`,
-    redMaroon: `#800000`,
-    chocolate: `#863B00`,
-    blue: `#0000FF`,
-    bluePoly: `#0451A5`,
-    darkBlue: `#001188`,
-    blueGray: `#4F76AC`,
-    blueTeal: `#008080`,
-    blueGreen: `#2E869A`,
-    bluePastel: `#4864AA`,
-    persianBlue: `#3030C0`,
-    gray: `#808080`,
-    grayJet: `383838`,
-    grayDim: `#666666`,
-    graySlate: `778899`,
-    green: `#008000`,
-    greenPastel: `#098658`,
-    pinkSteel: `#C700C7`,
-    pinkPurple: `#AF00DB`,
-    whiteBackground: `#FFFBFF`,
-    chartOrange: `#DF631C`,
-    evaOrange: `#FF6D12`
+
   },
   darkEditor: {
     green: `#6FE1F7`,
@@ -264,16 +189,38 @@ export const alerts = {
  }
 
 export const colors = {
+  red: `#DD0000`,
+  redLight: `#CD3131`,
+  redPastel: `A31515`,
+  redMaroon: `#800000`,
+  chocolate: `#863B00`,
+  blue: `#0000FF`,
+  bluePoly: `#0451A5`,
+  darkBlue: `#001188`,
+  blueGray: `#4F76AC`,
+  blueTeal: `#008080`,
+  blueGreen: `#2E869A`,
+  bluePastel: `#4864AA`,
+  persianBlue: `#3030C0`,
+  gray: `#808080`,
+  grayJet: `383838`,
+  grayDim: `#666666`,
+  graySlate: `778899`,
+  green: `#008000`,
+  greenPastel: `#098658`,
+  pinkSteel: `#C700C7`,
+  pinkPurple: `#AF00DB`,
+  whiteBackground: `#FFFBFF`,
+  chartOrange: `#DF631C`,
+  evaOrange: `#FF6D12`,
   ...red,
   ...gray,
-  ...fade,
   ...white,
   ...green,
   ...black,
   ...purple,
   ...yellow,
   ...alerts,
-  ...fadeDark,
   ...gobletColors,
   ...editor,
 }

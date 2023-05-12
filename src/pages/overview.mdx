@@ -1,24 +1,42 @@
-# GobletQA Platform Overview
+import { Callout } from 'nextra-theme-docs'
+
+import { WIP } from '../components/WIP/WIP'
+import { GreenText, GrayText, PurpleText } from '../components/Text/Text'
+
+# <PurpleText>Overview</PurpleText>
+
+* **[Architecture](/overview/architecture)**<br/>
+  The architecture of the GobletQA Platform is designed to provide a robust and secure environment for creating and executing tests or automation.
+  <br/>
 
 
-Authentication: Users authenticate with the GobletQA Platform using their GitHub or GitLab accounts. The platform obtains an authentication token from the selected Git provider to synchronize repository changes.
+* **[Git Provider](/overview/git-providers)**<br/>
+  Git cloud providers integrated into the platform providing authentication and access to users repositories
+  <br/>
 
-Repository Selection: After authentication, users can select a repository and branch they want to work with. They can choose from their existing repositories or create new ones directly within the GobletQA Platform.
 
-Session Container Creation: Once a repository and branch are selected, the GobletQA Platform creates a session container, a short-lived virtual machine in the cloud. The container is tied to the user's active session and is responsible for executing tests and automation.
+* **[Mounted Repo](/overview/mounted-repo)**<br/>
+  After authentication, users can select a repository and branch they want to work with. They can choose from their existing repositories or create new ones directly within the GobletQA Platform.
+  <br/>
 
-Feature File Creation: Users can write feature files within the GobletQA Platform using the Monaco IDE editor. They can leverage the Gherkin syntax and utilize predefined step definitions provided by the platform. Custom step definitions can also be written by users if needed.
 
-Integration and Execution: The GobletQA Platform integrates with open-source technologies such as Playwright, Kubernetes, Docker, and Jest. This allows users to automate web browsers, execute user-supplied scripts or functions, write API and unit tests, and leverage the full functionality of the Jest testing framework.
+* **[Conductor](/overview/conductor)**<br/>
+  Critical micro-service that sits between the proxy and session container. It acts as an intermediary between the two; managing the lifecycle of session container relative to a users active session.
+  <br/>
 
-Real-time Execution and Feedback: The platform provides a fully interactive environment where users can see their tests and automation execute in real-time. It includes a VNC session using noVNC, displaying a fully interactive web browser within the user's own browser. Users can directly interact with feature files, code, and browser automation as they are written and executed, ensuring everything runs as expected.
 
-Git Integration: The GobletQA Platform seamlessly integrates with the Git CLI, automatically handling changes made by users. All changes to the repository are saved by committing and pushing changes to the remote Git repository. This enables easy collaboration and sharing of repository files within a team.
+* **[Session Container Creation](/overview/session-container)**<br/>
+  Once a repository and branch are selected, the GobletQA Platform creates a session container, a short-lived virtual machine in the cloud. The container is tied to the user's active session and is responsible for executing tests and automation.
+  <br/>
 
-Security and Isolation: The platform prioritizes security by implementing various safety features. The session containers are not publicly exposed and can only be accessed through a proxy. Authentication tokens obtained during user sign-in are used to generate JWTs for authentication and ensure secure communication. Session containers are isolated and removed once a user session ends, ensuring data privacy and security.
 
-CI/CD Integration: The GobletQA Platform integrates with CI/CD systems, allowing users to execute tests and automation before deploying to production environments. Users can configure various test execution options, generate reports, and record videos of test executions for debugging purposes.
+* **[Goblet Folder](/overview/goblet-folder)**<br/>
+  <WIP />
+  <br/>
 
-Artifacts and Reports: The platform provides support for generating artifacts such as test reports and recorded videos. These artifacts help users analyze test results, identify issues, and gain insights into the execution of their tests and automation.
 
-Overall, the GobletQA Platform empowers non-developers to create and execute various types of tests and automation, leveraging low-code or no-code approaches. It abstracts away technical complexities and provides a user-friendly interface to ensure efficient testing and validation of code.
+* **[Artifacts](/overview/artifacts)**<br/>
+  <WIP />
+  <br/>
+
+

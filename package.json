@@ -9,6 +9,8 @@
     "start": "next"
   },
   "dependencies": {
+    "@mdi/js": "^7.2.96",
+    "@mdi/react": "^1.6.1",
     "next": "^13.4.1",
     "nextra": "^2.5.2",
     "nextra-theme-docs": "^2.5.2",

@@ -1,31 +1,69 @@
-# Welcome to the GobletQA Platform documentation!
+import { GreenText, GrayText, PurpleText } from '../components/Text/Text'
 
-This section provides an overview of the GobletQA Platform, its purpose, and its key features. Whether you are a non-developer looking to create tests or an experienced developer seeking a low-code solution, the GobletQA Platform offers a user-friendly environment for writing and executing various types of tests.
+# <PurpleText>Welcome</PurpleText>
 
-What is the GobletQA Platform?
+These docs provide an overview of the GobletQA Platform, and its key features. Whether you are a novice trying to learn more about test automtion or an experienced developer seeking an easier and stright forward test solution, the GobletQA Platform offers a user-friendly environment for writing and executing various types of tests and automation.<br/>
 
-The GobletQA Platform is a Cloud SASS (Software as a Service) application designed to empower non-developers to create different test types, including automated tests, integration tests, and unit tests. It serves as a low-code/no-code solution, enabling users to define test scenarios using feature files written in the Gherkin syntax.
+## <PurpleText>What is GobletQA?</PurpleText>
 
-Key Features of the GobletQA Platform
+The GobletQA Platform is a Cloud SASS __(Software as a Service)__ application designed to empower user of all skill sets to create a wide range tests and automation processes.<br/>
+It facilitates a __low-code/no-code__ solution for non-developers through [feature files](/guides/feature-file) written in the Gherkin syntax, while simultaneously enhancing the productivity, capabilities of power users with its user-friendly interface and intuitive design.<br/>
 
-The GobletQA Platform encompasses several key features that make it a powerful tool for test creation and execution. These features include:
+## <PurpleText>Key Features</PurpleText>
 
-Predefined Step Definitions: The platform provides a comprehensive set of predefined step definitions that users can leverage while creating feature files. These step definitions cover a wide range of areas such as making API calls, browser automation, script execution, and more. Users can easily select and incorporate these step definitions into their test scenarios.
+The GobletQA Platform encompasses several key features that make it a powerful tool for creation and execution of tests or automation. These features include:
 
-Assertion Steps: To ensure the correct outcome of test steps, the GobletQA Platform includes a variety of assertion steps. These steps allow users to validate the expected results and ensure the accuracy of the tests.
+### <GreenText>Predefined Step Definitions</GreenText>
 
-Custom Step Definitions: For users with coding experience, the platform offers the flexibility to create custom step definitions. These custom step definitions can be seamlessly integrated into the feature files alongside the built-in step definitions, expanding the range of test scenarios that can be created.
+  The platform provides a comprehensive set of predefined step definitions that users can leverage while creating feature files. These step definitions cover a wide range of areas such as making API calls, browser automation, script execution, and more. Users can easily select and incorporate these step definitions into their test scenarios using the integrated search and auto-complete functionality.
 
-Integration with Open Source Technologies: The GobletQA Platform integrates with popular open source technologies to support its functionality. It leverages the Playwright framework for automating web browsers, allowing users to interact with browsers, perform actions such as clicking, scrolling, and DOM manipulation, and verify the behavior of web applications.
+  * <GrayText>**Assertion Steps**</GrayText><br/>
+    To ensure the correct outcome of test steps, the GobletQA Platform includes a variety of assertion steps. These steps allow users to validate the expected results and ensure the accuracy of the tests.
+    <br/>
+  * <GrayText>**Custom Step Definitions**</GrayText><br/>
+    For users with coding experience, the platform offers the flexibility to create custom step definitions. These custom step definitions can be seamlessly integrated into the feature files alongside the built-in step definitions, expanding the range of test scenarios that can be created.
+    <br/>
+    <br/>
 
-Script and Function Execution: Users can execute their own scripts or functions within an isolated virtual machine created by Kubernetes and Docker. This ensures security and reliability while allowing users to perform custom actions or implement specific business logic as part of their tests.
+### <GreenText>Integrations</GreenText>
 
-API and Unit Testing Support: The platform provides support for writing API and unit tests using JavaScript or TypeScript and the Jest test framework. Users can write tests directly in the browser using the integrated Monaco IDE editor. The editor offers essential features such as auto-complete, code highlighting, and full-text search, simplifying the test creation process.
+  The GobletQA Platform integrates with popular open source technologies to support its functionality. It leverages the Playwright framework for automating web browsers, allowing users to interact with browsers, perform actions such as clicking, scrolling, and DOM manipulation, and validate the behavior of their applications.
 
-Real-time Browser Interaction: The GobletQA Platform incorporates a VNC (Virtual Network Computing) session using noVNC. This session allows users to visualize and interact with the browser in real-time as tests and automation are executed. It provides a responsive and dynamic environment, enabling users to observe the behavior of their code and make necessary adjustments during the development process.
+  * <GrayText>**No Vendor Lock-In**</GrayText><br/>
+    Becasue it uses open source technologies; the tests and automation scripts are not held hostage by a popritary framework. This significtly reduces risk by allowing users to continue executing their code with or without using the platform.
+    <br/>
+    <br/>
 
-Git Integration: The platform seamlessly integrates with the git command-line interface (CLI) and handles repository changes made within the GobletQA Platform. It leverages the git CLI to commit and push changes to a remote git repository, facilitating collaboration and easy sharing of repository files among team members.
+### <GreenText>API and Unit Testing Support</GreenText>
 
-With its user-friendly interface, extensive feature set, and support for a wide range of test scenarios, the GobletQA Platform simplifies the process of creating tests and executing automation, making it accessible to both novice users and experienced developers.
+  The platform provides support for writing API and unit tests using JavaScript or TypeScript and the Jest test framework.
 
+  * <GrayText>**Script and Function Execution**</GrayText><br/>
+    Users can execute their own scripts or functions within an isolated virtual machine with a stable and consistent environment. This ensures security and reliability while allowing users to perform custom actions or implement business logic specific to their requirments.
+    <br/>
+    <br/>
+
+### <GreenText>Streamlined UI</GreenText>
+
+  The platform interface offers a seamless and intuitive experience, combining the power of the Monaco IDE and the VNC-powered browser in a split pane view. This unique UI layout enhances productivity and provides users with comprehensive control over their testing and automation workflows.
+
+  * <GrayText>**Monaco IDE**</GrayText><br/>
+    The editor offers essential features such as **auto-complete**, **code highlighting**, and **full-text search**, simplifying the test creation process. This is the same editor that powers [VS Code](https://code.visualstudio.com/)
+    <br/>
+  * <GrayText>**Browser Inception**</GrayText><br/>
+    The integrated VNC-powered browser, is a powerful tool that brings test automation to life. This browser provides a fully interactive and real-time view of test execution, allowing users to witness their tests and automation scripts in action. This immersive experience significantly reduces the feedback loop between code development and test execution, enabling users to validate and fine-tune their tests with precision.
+    <br/>
+  * <GrayText>**Real-time Interaction**</GrayText><br/>
+    The split pane view, combining the Monaco IDE and the VNC-powered browser, offers a cohesive workspace that fosters efficiency and convenience. Users can seamlessly switch between writing code in the IDE and observing the test execution in the browser, providing a holistic view of their testing process. This integrated approach enhances the development workflow, enabling users to iterate quickly, troubleshoot effectively, and ensure their tests and automation are running as expected.
+    <br/>
+    <br/>
+
+### <GreenText>Git Integration</GreenText>
+
+  Through the seamless integration with the [git cli](https://git-scm.com), any changes made within the platform are automatically synced with your [git cloud provider](/overview/git-providers). It does this by leveraging the __commit__ and __push__ commands to continuously sync all changes up to a git remote repository, facilitating collaboration and easy sharing of code among team members.
+
+<br/>
+<br/>
+<hr/>
+<br/>
 In the following sections, we will dive deeper into the various features and functionalities offered by the GobletQA Platform, providing detailed explanations and examples to help you make the most of this powerful testing tool.
