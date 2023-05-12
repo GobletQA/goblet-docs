@@ -4,7 +4,6 @@ import { Logo } from '../components/Logo'
 import { Head } from '../components/Head'
 import { FooterText } from '../components/Footer'
 import { SidebarTitle } from '../components/Sidebar'
-import { GobletIcon } from '../components/GobletIcon'
 
 const config:DocsThemeConfig = {
   logo: Logo,
@@ -13,8 +12,7 @@ const config:DocsThemeConfig = {
   // primaryHue: `#785B9C`,
   docsRepositoryBase: `https://github.com/GobletQA/goblet-docs`,
   project: {
-    icon: GobletIcon,
-    link: `https://gobletqa.com/`,
+    link: `https://github.com/GobletQA/goblet-docs`,
   },
    feedback: {
     labels: `issue`,

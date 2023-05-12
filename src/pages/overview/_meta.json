@@ -1,7 +1,7 @@
 {
   "architecture": "Architecture",
   "auth": "Authentication",
-  "git-provider": "Git Cloud Providers",
+  "git-providers": "Git Cloud Providers",
   "conductor": "Conductor",
   "session-container": "Session Container",
   "mounted-repo": "Mounted Repo",

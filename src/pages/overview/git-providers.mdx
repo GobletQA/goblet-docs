@@ -1,32 +1,63 @@
+import { Callout } from 'nextra-theme-docs'
+
 # Git Cloud Providers
+
+To access the Goblet platform, we use a git cloud provider to manage user accounts. Currently, GitHub and GitLab are the only providers available.
+<br/>
+We plan to add more options soon, including BitBucket, CodeCommit and more.
+
+<Callout>
+  See the [authentication](/overview/auth) section for why a Git cloud provider is required
+</Callout> 
+
+<br/>
 
 ## Github
 
+* **GobletQA platform**
+  * Navigate your browser to http://dev.gobletqa.app
+  * When presented with the modal to login select the `GitHub` button
+  * An external window will open, which will ask you to autozied the GobletQA application
+  * Once authorized, the external window will close
+  * The Goblet platform will present you with the [Repo Connect](/overview/mounted-repo) modal
+  * From the dropdown, select the repo you wish to mount into the session container
+
+<br/>
+
 ## GitLab
 
-### Authentication
-* Due to how Gitlab handles OAuth, an application must be configured **before** logging via Gitlab
-* This is done in the [oauth/applications section of gitlab.com](https://gitlab.com/oauth/applications) or a hosted version of Gitlab
+Due to how Gitlab handles OAuth, an application must be configured **before** logging via the GitLab provider and registering the GobletQA application.
+<br/>
+This is done in the `oauth/applications` section of the public [gitlab.com](https://gitlab.com/oauth/applications) of a hosted version of the GitLab application
 
-### Configuration Steps
+<br/>
 
-* Configure your GitLab account by registering an application in gitlab
-* Next, create a credential record for the GitLab App provider.
+### Configure GitLab OAuth 2.0
 
-#### Configure GitLab as an OAuth 2.0
-* For more information, see [GitLab documentation](https://docs.gitlab.com/ee/integration/oauth_provider.html)
+> For more information, see [GitLab documentation](https://docs.gitlab.com/ee/integration/oauth_provider.html)
 
-**Steps**
-* From your GitLab account, create your Application by navigating to Edit Profile > Applications
-* In the Add new application form
-  * Specify a **Name**, and in Redirect URI field enter
-    * `https://dev.gobletqa.app`
-* In the Scopes section, ensure that you select the following check boxes:
-  * `api`
-  * `email`
-  * `openid`
-* Leave the remaining fields empty (default).
-* Click Save application
-* The application should now be created.
-* Note down the `Application ID` and `Secret`
-  * This will be used later in Goblet
+* **GitLab Account**
+  * Create an Application by navigating to `Edit Profile > Applications`
+  * In the Add new application form
+    * Specify the name `GobletQA` in the **Name** field
+    * Next, in Redirect URI field enter `https://dev.gobletqa.app`
+  * In the Scopes section, ensure that you select the following check boxes:
+    * `api`
+    * `email`
+    * `openid`
+  * Leave the remaining fields empty (default).
+  * Click Save application
+  * The application should now be created.
+  * Note down the `Application ID` and `Secret`
+    * This will be used later in Goblet
+
+* **GobletQA platform**
+  * Navigate your browser to http://dev.gobletqa.app
+  * When presented with the modal to login select the `GitLab` button
+  * Then enter in the `Application ID` noted down from the GitLab steps above, and hit `next`
+  * An external window will open, which will ask you to autozied the GobletQA application
+  * Once authorized, the external window will close
+  * The Goblet platform will present you with the [Repo Connect](/overview/mounted-repo) modal
+  * From the dropdown, select the repo you wish to mount into the session container
+
+
