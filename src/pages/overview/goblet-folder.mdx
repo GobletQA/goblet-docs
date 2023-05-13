@@ -1,7 +1,52 @@
-import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
-import { PurpleText } from '../../components/Text/Text'
+import { WIP } from '../../components/WIP/WIP'
+import { GreenText, RedText, PurpleText } from '../../components/Text/Text'
 
 # <PurpleText>Goblet Folder</PurpleText>
 
+The goblet folder is a special directory within your project's repository that plays a significant role in the GobletQA Platform. This folder serves as a container for organizing and managing the files and resources related to your testing and automation workflows and should align with the `paths` defined in your `goblet.config` file. Let's explore the purpose and structure of the goblet folder:<br/>
+
+### <GreenText>Structure</GreenText>
+
+The `paths` object defined in the [Goblet Config](/advanced/goblet-config) file, outlines the structure and locations for files and folders within the Goblet Folder. While these paths can be customized to use locations outside of the Goblet folder, it is **recommended** to use the default configuration. Modifications to the file and folder paths should only be entertained for **very specific** edge-cases.
+> See the [Goblet Config -> paths](/advanced/goblet-config#paths) property for more information.<br/>
+
+
+### <GreenText>Feature Files</GreenText>
+These files are placed in the `./goblet/bdd/features` directory. Which is defined by the `paths.featuresDir` in the `goblet.config` file. All files in this directory should end with the extention `.feature`.<br/>
+For example:<br/>
+  * `foo.feature` -> <GreenText>Valid file name</GreenText>
+  * `foo.bar.feature` -> <GreenText>Valid file name</GreenText>
+  * `bar.txt` -> <RedText>Invalid file name</RedText>
+  * `feature.bar` -> <RedText>Invalid file name</RedText><br/>
+
+Feature files should be written in the Gherkin syntax matching the [Gherkin spec](https://cucumber.io/docs/gherkin/reference/). Feature files define the behavior and scenarios to be tested, outlining the steps and expected outcomes of your tests. Placing feature files within the features folder allows the GobletQA Platform to easily identify and access them during the testing and automation process.<br/>
+
+
+### <GreenText>Step Definitions</GreenText>
+
+Alongside your feature files, the goblet folder also accommodates step definition files. Step definitions contain the implementation code that corresponds to the steps outlined in your feature files. These step definitions define how the GobletQA Platform should execute each step and interact with your application or system under test. By keeping the step definitions within the goblet folder, you ensure their availability and easy integration with your feature files.<br/>
+
+<WIP />
 <br/>
-<ComingSoon />
+
+
+### <GreenText>Configuration File</GreenText>
+
+The goblet folder may also contain a goblet.config.(js|ts) file, which is a configuration file specific to your project. This file allows you to customize and configure various aspects of the GobletQA Platform, such as environment settings, dependency management, test framework options, and more. Placing the configuration file within the goblet folder ensures that it is easily accessible and associated with your testing and automation workflows.
+> See [Goblet Config](/advanced/goblet-config) for more information<br/>
+
+<WIP />
+<br/>
+
+### <GreenText>Support Files and Resources</GreenText>
+
+Additionally, the goblet folder can house any supporting files and resources that are necessary for your testing and automation. This may include utility functions, data files, test fixtures, or any other assets required by your project's workflows. By organizing these files within the goblet folder, you maintain a cohesive structure and keep all relevant resources together.<br/>
+
+<WIP />
+<br/>
+
+<br/>
+<br/>
+<br/>
+
+The goblet folder serves as a central hub for your project's testing and automation artifacts, providing a structured location for feature files, step definitions, configuration files, and supporting resources. Placing these files within the goblet folder ensures their accessibility and facilitates seamless integration with the GobletQA Platform. By adhering to this folder structure, you can effectively manage and maintain your testing and automation workflows within the GobletQA Platform.
