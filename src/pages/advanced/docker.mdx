@@ -1,0 +1,55 @@
+import { YellowText, PurpleText, GrayText, GreenText } from '../../components/Text/Text'
+
+# <PurpleText>Goblet QA Test Docker Image</PurpleText>
+
+The Goblet Test Docker image allows you to run Goblet tests locally using Docker. This is the same image used with the github action and provides the same functionality, but can be used independently.
+
+## <PurpleText>Getting Started</PurpleText>
+
+The Docker image can be downloaded from `ghcr.io/gobletqa/goblet-tests-action:latest`. You can pull the image locally using the following command:
+
+```shell
+docker pull ghcr.io/gobletqa/goblet-tests-action:latest
+```
+
+To run the image, use the following command:
+
+```shell
+docker run --rm -it ghcr.io/gobletqa/goblet-tests-action:latest [options]
+```
+
+## <PurpleText>Configuration</PurpleText>
+
+The Docker image is configured using environment variables. For more information on the avaliable environment variables and their functionality, see the [CI/CD - Action Inputs](/advanced/cicd) page
+
+### <GreenText>Simple</GreenText>
+
+```shell
+LOCAL_TESTS_DIR="$(pwd)"
+REMOTE_TESTS_DIR=/goblet/workspace
+
+docker run --rm -it \
+  -e GOBLET_TOKEN=$GOBLET_TOKEN \
+  -v $LOCAL_TESTS_DIR:$REMOTE_TESTS_DIR \
+  --workdir $REMOTE_TESTS_DIR \
+  ghcr.io/gobletqa/goblet-tests-action:latest
+```
+
+### <GreenText>Advanced</GreenText>
+
+```shell
+docker run --rm -it \
+  -e GOBLET_TESTS_PATH=login.feature \
+  -e GOBLET_TOKEN=$GOBLET_TOKEN \
+  -e GIT_TOKEN=$GIT_TOKEN \
+  -e GIT_ALT_REPO=https://github.com/username/repo.git \
+  -e GIT_ALT_BRANCH=feature-branch \
+  -e GOBLET_BROWSERS=firefox,webkit \
+  -e GOBLET_TEST_TRACING=1 \
+  -e GOBLET_TEST_VIDEO_RECORD=1 \
+  -e GOBLET_TEST_REPORT=always \
+  ghcr.io/gobletqa/ggoblet-tests-action:latest
+```
+
+* <YellowText>**IMPORTANT**</YellowText> - Remember to adjust the environment variables based on your specific environment
+

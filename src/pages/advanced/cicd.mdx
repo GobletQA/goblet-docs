@@ -1,7 +1,358 @@
-import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
-import { PurpleText } from '../../components/Text/Text'
+import { YellowText, PurpleText, GrayText, GreenText, RedText } from '../../components/Text/Text'
 
 # <PurpleText>Continuous Integration and Continuous Deployment (CI/CD)</PurpleText>
 
 <br/>
-<ComingSoon />
+
+## <PurpleText>Github Action</PurpleText>
+
+[Github Marketplace](https://github.com/marketplace/actions/gobletqa-tests)
+
+The GobletQA Test Action allows you to execute Goblet tests for a repository within a GitHub Action. This action provides various inputs to configure how the tests will run. Each input also has a corrisponding `environment variable` that can be used instead. If both the `input` and the `environment variable` are set, the `input` takes presidence.<br/>
+
+### <GreenText>Action Inputs</GreenText>
+
+##### `test-context`
+* As ENV - <GrayText><b>GOBLET_TESTS_PATH</b></GrayText>
+* Path to the tests to run
+* **default** - Runs all tests if not defined
+
+##### `git-token` <RedText>*</RedText>
+* <RedText>**REQUIRED**</RedText>
+* As ENV - <GrayText><b>GIT_TOKEN</b></GrayText> || <GrayText><b>GOBLET_GIT_TOKEN</b></GrayText>
+* Github Auth Token or Personal Access Token (PAT)
+* **default** - `undefined`
+
+##### `goblet-token` <RedText>*</RedText>
+* <RedText>**REQUIRED**</RedText>
+* As ENV - <GrayText><b>GOBLET_TOKEN</b></GrayText>
+* Goblet Auth Token (GAT)
+* **default** - `undefined`
+
+##### `alt-repo`
+* As ENV - <GrayText><b>GIT_ALT_REPO</b></GrayText>
+* Alternative repository that contains the tests to be run
+* Should follow the pattern of `https://<git-token>@domain/owner/repo.git`
+  * For example  `github.com/octokitty/app-tests.git`
+* **default** - `undefined`
+
+##### `alt-branch`
+* As ENV - <GrayText><b>GIT_ALT_BRANCH</b></GrayText>
+* Name of the branch to use for the alternative repository.
+* **default** - The alternative repositories default branch
+
+##### `alt-user`
+* As ENV - <GrayText><b>GIT_ALT_USER</b></GrayText>
+* Github user name or organization with write access to the alternative repository.
+* **default** - current `git user`
+
+##### `alt-email`
+* As ENV - <GrayText><b>GIT_ALT_EMAIL</b></GrayText>
+* Email of user with write access to the alternative repository.
+* **default** - current `git users email`
+
+##### `alt-token`
+* As ENV - <GrayText><b>GIT_ALT_TOKEN</b></GrayText>
+* Github Token with write access to the alternative repository.
+* Checks the following envs in order `GIT_ALT_TOKEN`, `GOBLET_GIT_TOKEN`, `GIT_TOKEN` 
+* **default** - Value of the `git-token` input
+
+##### `test-type`
+* Type of tests to be run that are supported by the Goblet Platform
+* Can be one of `bdd`, `waypoint`, or `unit`
+* **default** - `bdd`
+
+##### `test-retry`
+* As ENV - <GrayText><b>GOBLET_TEST_RETRY</b></GrayText>
+* Number of times a failed test should be retried
+* **default** - `undefined` - Tests are **NOT** retried
+
+##### `test-report`
+* As ENV - <GrayText><b>GOBLET_TEST_REPORT</b></GrayText>
+* Generate an html formatted test report for all executed tests 
+* Value must be one of `true` | `1` | `failed` | `always` | `never` | `0` | `false`
+  * `failed` - Enable only for test runs that failed
+    * **IMPORTANT** - Both `true` | `1` are synonyms of `failed`
+  * `alway` - Enable regardless of `pass` or `fail` test status
+  * `never` - Disabled regardless of `pass` or `fail` test status
+    * **IMPORTANT** - Both `false` | `0` are synonyms of `never`
+* **default** - `false`
+
+##### `test-tracing`
+* As ENV - <GrayText><b>GOBLET_TEST_TRACING</b></GrayText>
+* Enabled test tracing via playwright. See more [here](https://playwright.dev/docs/api/class-tracing)
+* Value must be one of `true` | `1` | `failed` | `always` | `never` | `0` | `false`
+  * `failed` - Enable only for tests that failed
+    * **IMPORTANT** - Both `true` | `1` are synonyms of `failed`
+  * `alway` - Enable regardless of `pass` or `fail` test status
+  * `never` - Disabled regardless of `pass` or `fail` test status
+    * **IMPORTANT** - Both `false` | `0` are synonyms of `never`
+* **default** - `false`
+
+##### `test-screenshot`
+* <YellowText>**IMPORTANT**</YellowText> - Not currently implemented. Use `test-tracing` instead
+* As ENV - <GrayText><b>GOBLET_TEST_SCREENSHOT</b></GrayText>
+* Enabled browser image snapshots for failed tests. Ignored if `test-tracing` is `true`
+* Value must be one of `true` | `1` | `failed` | `always` | `never` | `0` | `false`
+  * `failed` - Enable only for tests that failed
+    * **IMPORTANT** - Both `true` | `1` are synonyms of `failed`
+  * `alway` - Enable regardless of `pass` or `fail` test status
+  * `never` - Disabled regardless of `pass` or `fail` test status
+    * **IMPORTANT** - Both `false` | `0` are synonyms of `never`
+* **default** - `false`
+
+##### `test-record`
+* As ENV - <GrayText><b>GOBLET_TEST_VIDEO_RECORD</b></GrayText>
+* Enabled browser video recording via playwright
+* Value must be one of `true` | `1` | `failed` | `always` | `never` | `0` | `false`
+  * `failed` - Enable only for tests that failed
+    * **IMPORTANT** - Both `true` | `1` are synonyms of `failed`
+  * `alway` - Enable regardless of `pass` or `fail` test status
+  * `never` - Disabled regardless of `pass` or `fail` test status
+    * **IMPORTANT** - Both `false` | `0` are synonyms of `never`
+* **default** - `false`
+
+##### `test-timeout`
+* As ENV - <GrayText><b>GOBLET_TEST_TIMEOUT</b></GrayText>
+* Amount of time for a test to wait until it times out and is then marked as failed
+* **default** - `30000` milliseconds (30 seconds)
+
+##### `test-cache`
+* As ENV - <GrayText><b>GOBLET_TEST_CACHE</b></GrayText>
+* Use internal test cache when executing test
+* **default** - `true`
+
+##### `test-colors`
+* As ENV - <GrayText><b>GOBLET_TEST_COLORS</b></GrayText>
+* Force use of colors even when not a TTY
+* **default** - `true`
+
+##### `test-workers`
+* As ENV - <GrayText><b>GOBLET_TEST_WORKERS</b></GrayText>
+* Number of workers to use when running tests
+* **default** - `50%`
+
+##### `test-verbose`
+* As ENV - <GrayText><b>GOBLET_TEST_VERBOSE</b></GrayText>
+* Output verbose test results as the tests run
+* **default** - `false`
+
+##### `test-open-handles`
+* As ENV - <GrayText><b>GOBLET_TEST_OPEN_HANDLES</b></GrayText>
+* Detect handles left open when tests run, **AND** forces tests to run in sync.
+* **default** - `false`
+
+##### `browsers`
+* As ENV - <GrayText><b>GOBLET_BROWSERS</b></GrayText>
+* Comma separated list of Browsers to execute tests against
+* **default** - all browsers - `chrome`, `firefox` and `webkit`
+
+##### `browser-debug`
+* As ENV - <GrayText><b>GOBLET_BROWSER_DEBUG</b></GrayText>
+* Log the debug output of the playwright browser
+* **default** - `false`
+
+##### `browser-slow-mo`
+* As ENV - <GrayText><b>GOBLET_BROWSER_SLOW_MO</b></GrayText>
+* Slow down the actions executed with-in a browser while executing tests in milliseconds
+* **default** - `100` milliseconds
+
+##### `browser-concurrent:`
+* As ENV - <GrayText><b>GOBLET_BROWSER_CONCURRENT</b></GrayText>
+* Run the tests in each defined browser at the same time
+* **default** - `false`
+
+##### `browser-timeout`
+* As ENV - <GrayText><b>GOBLET_BROWSER_TIMEOUT</b></GrayText>
+* Amount of time for the browser to wait until it times out and the corresponding test fails
+* **default** - `15000` milliseconds (15 seconds)
+
+##### `artifacts-debug`
+* As ENV - <GrayText><b>GOBLET_ARTIFACTS_DEBUG</b></GrayText>
+* Enable debug logging for all generated artifacts
+* **default** - `false`
+
+<br/>
+
+### <GreenText>Action Outputs</GreenText>
+
+* <YellowText>**IMPORTANT**</YellowText> - Because multiple paths can be exported, the outputs are first escaped prior to being set
+  * This ensures all paths are included in the output
+  * See [here](https://github.community/t/set-output-truncates-multiline-strings/16852) and [here](https://github.community/t/what-is-the-correct-character-escaping-for-workflow-command-values-e-g-echo-xxxx/118465/4) for more information
+  * The output paths are relative to the active workspace
+    * In docker the path output is relative to `/github/workspace`
+    * In an action path output  is relative to `/home/runner/work/<repo-name>/<repo-name>`
+      * The `<repo-name>` should be replace with the name of the repository running the action
+
+##### `result`
+
+* Result of the Goblet test execution. One of `pass` or `fail`
+
+##### `artifacts-path`
+
+* Relative path to the generated **artifacts** directory
+
+##### `report-paths`
+
+* **IMPORTANT** - The `test-report` input must be set to `true`
+* Paths to the generated html test reports for each browser relative to the active workspace directory
+* A single report is created for **ALL** test files that are run
+* Examples
+  * Output with all browsers
+    * Escaped Output
+    ```sh
+      goblet/reports/feature/test/test-chromium-1657592644482.html%0Agoblet/reports/feature/test/test-webkit-1657592644482.html%0Agoblet/reports/feature/test/test-firefox-1657592644482.html
+    ```
+    * Unescaped Output
+    ```sh
+      goblet/reports/feature/test/test-chromium-1657592644482.html
+      goblet/reports/feature/test/test-webkit-1657592644482.html
+      goblet/reports/feature/test/test-firefox-1657592644482.html
+    ```
+  * Output with only Webkit browser
+    * Unescaped and Escaped Output is the same
+    ```sh
+      goblet/reports/feature/test/test-webkit-1657584807895.html
+    ```
+
+##### `trace-paths`
+
+* <YellowText>**IMPORTANT**</YellowText> - The `test-tracing` input must be set to `true`
+* Paths of the generated playwright traces of executed tests relative to the active workspace directory
+* Separate traces are created for **EVERY** test file that is run
+* Examples
+  * Output with all browsers
+    * Escaped Output
+    ```sh
+      goblet/artifacts/traces/bdd/test/test-chromium-1657592733262.zip%0Agoblet/artifacts/traces/bdd/test/test-webkit-1657592734085.zip%0Agoblet/reports/traces/bdd/test/test-firefox-1657590811091.zip
+    ```
+    * Unescaped Output
+    ```sh
+      goblet/artifacts/traces/bdd/test/test-chromium-1657592733262.zip
+      goblet/artifacts/traces/bdd/test/test-webkit-1657592734085.zip
+      goblet/artifacts/traces/bdd/test/test-firefox-1657590811091.zip
+    ```
+  * Output with only Webkit browser
+    * Unescaped and Escaped Output is the same
+    ```sh
+      goblet/artifacts/traces/bdd/test/test-webkit-1657592734085.zip
+    ```
+
+
+##### `video-paths`
+
+* <YellowText>**IMPORTANT**</YellowText> - The `test-record` input must be set to `true`
+* Paths to the video recordings of executed tests relative to the active workspace directory
+* Separate videos are recorded for **EVERY** test file that is run
+* Examples
+  * Output with all browsers
+    * Escaped Output
+    ```sh
+      goblet/artifacts/videos/bdd/test/test-webkit-1657592734085.webm%0Agoblet/artifacts/videos/bdd/test/test-chromium-1657592733262.webm%0Agoblet/artifacts/videos/bdd/test/test-firefox-1657591132585.webm
+    ```
+    * Unescaped Output
+    ```sh
+      goblet/artifacts/videos/bdd/test/test-chromium-1657592733262.webm
+      goblet/artifacts/videos/bdd/test/test-webkit-1657592734085.webm
+      goblet/artifacts/videos/bdd/test/test-firefox-1657591132585.webm
+    ```
+  * Output with only Webkit browser
+    * Unescaped and Escaped Output is the same
+    ```sh
+      goblet/artifacts/videos/bdd/test/test-webkit-1657592734085.webm
+    ```
+
+
+### <GreenText>Alt-Repo Outputs</GreenText>
+
+* This Action runs within a docker container
+* It get's access the the underlying repository via a volume mount to `/github/workspace`
+  * I.E. given our repo name is `test-repo` located at `/home/runner/work/test-repo/test-repo`
+  * The repo is by default mounted **(via github)** to `/github/workspace` within the docker container
+  * This unfortunately is not configurable
+  * This can be seen in the docker command that is run, and looks similar to
+    * `-v "/home/runner/work/test-repo/test-repo":"/github/workspace"`
+* When **NOT** using an **Alt-Repo**, generated **artifacts** are saved to `/github/workspace/goblet/artifacts`
+  * Because of how docker volumes work this makes them available to future steps of a workflow
+* When using an **Alt-Repo**, generated **artifacts** are placed at `/github/alt/goblet/artifacts`
+  * They are then copied into the **same** save location at `/github/workspace/goblet/artifacts`
+  * Which allows them to be accessible to future steps of a workflow
+  * **IMPORTANT** - The copy process is a `forced` / `overwrite`
+    * Any existing files with the same name **will** be overwritten
+
+
+## <PurpleText>Example usage</PurpleText>
+
+### <GreenText>Basic</GreenText>
+
+```yaml
+- name: Run Goblet Tests
+  uses: gobletqa/goblet-tests-action@0.0.26
+  with:
+    # All tests with the word `goblet` in their path will be run
+    test-context: goblet
+    test-report: failed
+- if: ${{ steps.dashboard-tests.outputs.result }} === 'failed'
+  name: Do something with outputs
+  with:
+    run: |
+      echo ${{ steps.dashboard-tests.outputs.report-paths }}
+```
+
+### <GreenText>With Tracing and Video Recording</GreenText>
+
+```yaml
+- name: Run Goblet Tests
+  uses: gobletqa/goblet-tests-action@0.0.26
+  with:
+    git-token: ${{ github.token }}
+    test-tracing: always
+    test-record: always
+- if: always()
+  name: Do something with output
+  with:
+    run: |
+      echo ${{ steps.dashboard-tests.outputs.trace-paths }}
+      echo ${{ steps.dashboard-tests.outputs.video-paths }}
+```
+
+### <GreenText>Alt-Repo</GreenText>
+
+```yaml
+    steps:
+
+    - name: Run Dashboard Tests
+      id: dashboard-tests
+      uses: gobletqa/goblet-tests-action@0.0.26
+      with:
+        # Run all tests with the dashboard in their path
+        test-context: dashboard
+        # Branch that contains the tests to be run
+        # Defaults to the repos default branch branch. I.E. main / master
+        alt-branch: new-feat-branch
+        # URI to the repo, EXCLUDING the protocol I.E. github.com/owner/repo.git
+        alt-repo: github.com/octokitty/app-tests.git
+        # Must be an OAuth token or PAT that has access to the alternative repository
+        alt-token: ${{ secrets.ALT_GH_AUTH_PAT }}
+        # Must be an OAuth token or PAT for the current repository
+        git-token: ${{ secrets.GH_AUTH_PAT }}
+        test-report: failed
+        test-tracing: failed
+        test-record: failed
+
+    - name: Commit SHA
+      if: always()
+      id: commit-sha
+      run: echo "::set-output name=sha::$(git rev-parse --short HEAD)"
+
+    - uses: actions/upload-artifact@v3
+      if: always()
+      name: Upload Failed Tests
+      with:
+        name: repo-tests-${{ steps.commit-sha.outputs.sha }}
+        path: |
+          ${{ steps.dashboard-tests.outputs.report-paths }}
+          ${{ steps.dashboard-tests.outputs.trace-paths }}
+          ${{ steps.dashboard-tests.outputs.video-paths }}
+```
+
