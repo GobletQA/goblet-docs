@@ -38,6 +38,10 @@ docker run --rm -it \
 ### <GreenText>Advanced</GreenText>
 
 ```shell
+# 
+LOCAL_MOUNT_DIR="$(pwd)"
+REMOTE_MOUNT_DIR=/goblet/workspace
+
 docker run --rm -it \
   -e GOBLET_TESTS_PATH=login.feature \
   -e GOBLET_TOKEN=$GOBLET_TOKEN \
@@ -48,7 +52,12 @@ docker run --rm -it \
   -e GOBLET_TEST_TRACING=1 \
   -e GOBLET_TEST_VIDEO_RECORD=1 \
   -e GOBLET_TEST_REPORT=always \
+  -v $LOCAL_MOUNT_DIR:$REMOTE_MOUNT_DIR \
   ghcr.io/gobletqa/ggoblet-tests-action:latest
+
+# All generated artifacts from the above run will be found in the current working directory at
+# ./goblet/artifacts
+
 ```
 
 * <YellowText>**IMPORTANT**</YellowText> - Remember to adjust the environment variables based on your specific environment
