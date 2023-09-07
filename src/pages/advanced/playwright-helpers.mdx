@@ -1,0 +1,262 @@
+import { PurpleText, GreenText, YellowText } from '../../components/Text/Text'
+
+# <PurpleText>Playwright helpers</PurpleText>
+
+
+* This page describes the methods that can be imported from the `@GTU/Playwright` path
+* Example
+
+  ```ts
+    import { Given } from '@GTU/Parkin'
+    import { getLocator } from '@GTU/Playwright'
+
+    Given(`I click the element {string}`, async (selector:string) => {
+      const locator = await getLocator(selector)
+      await locator.click()
+    })
+  ```
+
+<br/>
+
+### `saveContextState(context: TBrowserContext, location?: string): Promise<TContextStorageState>`
+
+This asynchronous function is used to save the storage state of a Playwright BrowserContext into a file. It takes a `context` parameter, which should be a Playwright BrowserContext object whose storage state you want to save. Additionally, you can specify an optional `location` parameter to customize the path and filename of the saved storage state. The function returns a Promise that resolves to a `TContextStorageState` object representing the saved storage state.
+
+**<YellowText>Types</YellowText>**
+```ts
+
+  type TContextStorageState = Promise<{
+      cookies: {
+          name: string;
+          value: string;
+          domain: string;
+          path: string;
+          expires: number;
+          httpOnly: boolean;
+          secure: boolean;
+          sameSite: "Strict" | "Lax" | "None";
+      }[];
+      origins: {
+          origin: string;
+          localStorage: {
+              ...;
+          }[];
+    }[];
+  }>
+
+```
+
+---
+
+### `getContext(): Promise<TBrowserContext>`
+
+This asynchronous function retrieves the current Playwright BrowserContext instance. If a browser context does not exist, it throws an error indicating that no context has been created yet. It returns a Promise that resolves to a Playwright BrowserContext object.
+
+---
+
+### `getPage(num: number = 0, fromClosePage: boolean = false): Promise<TBrowserPage>`
+
+This asynchronous function gets a Playwright browser page instance by number or creates a new one if it doesn't exist. You can specify the `num` parameter to retrieve a specific page by its index, and the `fromClosePage` parameter determines whether a new page should be created if none exist. It returns a Promise that resolves to a Playwright BrowserPage object.
+
+---
+
+### `getLastActivePage(): TBrowserPage | undefined`
+
+This function returns the last active Playwright BrowserPage instance. If no active page exists, it returns `undefined`.
+
+---
+
+### `runInBrowser(props: TRunInBrowser, callback: (...args: any[]) => any): Promise<any>`
+
+This asynchronous function is a utility for running a callback function in a browser context. It takes two parameters:
+- `props`: An object containing the following properties:
+  - `cb`: The callback function to be executed in the browser context.
+  - `opts`: Optional data that can be passed to the callback.
+  - `locator`: A Playwright locator that identifies an element in the browser.
+  - `selector`: A CSS selector string to locate an element in the browser.
+
+If no `locator` or `selector` is provided, it executes the callback in the main page context. If a `locator` or `selector` is provided, it finds the element and executes the callback on it.
+
+- **Returns:** A Promise that resolves to the result of executing the callback in the browser context.
+
+**<YellowText>Types</YellowText>**
+```ts
+
+  export type TRunInBrowser = {
+    opts?:Record<string, any>
+    selector?:string
+    locator?:TLocator
+    cb?:(...args:any[]) => any,
+  }
+
+```
+
+---
+
+### `mediaPlay(props: TMediaIsPlayingSel | TMediaIsPlayingLoc): Promise<any>`
+
+This asynchronous function is responsible for playing media elements in the browser. It takes one parameter, `props`, which can be either a `TMediaIsPlayingSel` or `TMediaIsPlayingLoc` object. These objects define whether the media element is located by a CSS selector (`selector`) or a Playwright locator (`locator`).
+
+- **Returns:** A Promise that resolves when the media is played.
+
+---
+
+### `mediaStop(props: TMediaIsPlayingSel | TMediaIsPlayingLoc): Promise<any>`
+
+This asynchronous function is responsible for stopping media playback in the browser. It takes one parameter, `props`, which can be either a `TMediaIsPlayingSel` or `TMediaIsPlayingLoc` object. These objects define whether the media element is located by a CSS selector (`selector`) or a Playwright locator (`locator`).
+
+- **Returns:** A Promise that resolves when the media playback is stopped.
+
+**<YellowText>Types</YellowText>**
+```ts
+
+  export type TMediaIsPlayingLoc = {
+    selector?:never
+    locator:TLocator
+  }
+
+  export type TMediaIsPlayingSel = {
+    selector:string
+    locator?:never
+  }
+
+```
+
+---
+
+### `mediaIsPlaying(props: TMediaIsPlayingSel | TMediaIsPlayingLoc): Promise<boolean>`
+
+This asynchronous function checks whether a media element is currently playing in the browser. It takes one parameter, `props`, which can be either a `TMediaIsPlayingSel` or `TMediaIsPlayingLoc` object. These objects define whether the media element is located by a CSS selector (`selector`) or a Playwright locator (`locator`).
+
+- **Returns:** A Promise that resolves to a boolean value indicating whether the media element is playing.
+
+---
+
+### `mediaIsFinished(props: TMediaIsPlayingSel | TMediaIsPlayingLoc): Promise<boolean>`
+
+This asynchronous function checks whether a media element has finished playing in the browser. It takes one parameter, `props`, which can be either a `TMediaIsPlayingSel` or `TMediaIsPlayingLoc` object. These objects define whether the media element is located by a CSS selector (`selector`) or a Playwright locator (`locator`).
+
+- **Returns:** A Promise that resolves to a boolean value indicating whether the media element has finished playing.
+
+---
+
+### `getLocatorType(selector: string, type: string | TLocatorTypeKey = 'text', options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This asynchronous function finds an element on the current page as a locator based on the specified type. It takes the following parameters:
+- `selector`: A string representing the selector to locate the element.
+- `type`: An optional string or a `TLocatorTypeKey` indicating the type of locator to use. The default is `'text'`.
+- `options`: An optional object containing additional options for locating the element.
+
+The function determines the locator type based on the `type` parameter and uses the appropriate Playwright method to locate the element. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element. If the element is not found, it throws an error.
+
+**<YellowText>Types</YellowText>**
+```ts
+
+  export type TGetLocationOpts = {
+    waitFor?:boolean
+    page?: TBrowserPage
+  }
+
+```
+
+---
+
+### `getLocatorByText(selector: string, options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This function is a convenience wrapper for `getLocatorType`. It specifically looks for an element with the specified text content on the current page. It takes the following parameters:
+- `selector`: A string representing the text content to locate.
+- `options`: An optional object containing additional options for locating the element.
+
+The function internally calls `getLocatorType` with the type set to `'text'`. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element with the specified text content.
+
+---
+
+### `getLocatorByRole(selector: string, options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This function is a convenience wrapper for `getLocatorType`. It specifically looks for an element with the specified ARIA role attribute on the current page. It takes the following parameters:
+- `selector`: A string representing the ARIA role to locate.
+- `options`: An optional object containing additional options for locating the element.
+
+The function internally calls `getLocatorType` with the type set to `'role'`. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element with the specified ARIA role attribute.
+
+---
+
+### `getLocatorByLabel(selector: string, options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This function is a convenience wrapper for `getLocatorType`. It specifically looks for an element with the specified label text on the current page. It takes the following parameters:
+- `selector`: A string representing the label text to locate.
+- `options`: An optional object containing additional options for locating the element.
+
+The function internally calls `getLocatorType` with the type set to `'label'`. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element with the specified label text.
+
+---
+
+### `getLocatorByTitle(selector: string, options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This function is a convenience wrapper for `getLocatorType`. It specifically looks for an element with the specified title attribute on the current page. It takes the following parameters:
+- `selector`: A string representing the title attribute to locate.
+- `options`: An optional object containing additional options for locating the element.
+
+The function internally calls `getLocatorType` with the type set to `'title'`. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element with the specified title attribute.
+
+---
+
+### `getLocatorByPlaceholder(selector: string, options: TGetLocationOpts = emptyObj): Promise<TLocator>`
+
+This function is a convenience wrapper for `getLocatorType`. It specifically looks for an element with the specified placeholder attribute on the current page. It takes the following parameters:
+- `selector`: A string representing the placeholder attribute to locate.
+- `options`: An optional object containing additional options for locating the element.
+
+The function internally calls `getLocatorType` with the type set to `'placeholder'`. It returns a Promise that resolves to a Playwright `TLocator` object representing the located element with the specified placeholder attribute.
+
+---
+
+### `getLocator(selector: string, opts?: TLocOpts): TLocator`
+
+This function is a locator method that does not need to be awaited. It allows you to quickly locate an element on the last active page using a selector. It takes the following parameters:
+- `selector`: A string representing the selector to locate.
+- `opts`: An optional object containing additional options for locating the element.
+
+The function retrieves the last active page using `getLastActivePage()` and returns the first located element as a Playwright `TLocator`.
+
+**<YellowText>Types</YellowText>**
+```ts
+
+  export type TLocOpts = {
+    has?:TLocator
+    hasNot?:TLocator
+    hasText?:string
+    hasNotText?:string
+  }
+
+```
+
+---
+
+### `getLocators(selector: string): Promise<TLocator>`
+
+This asynchronous function is used to locate all elements on the current page that match the specified selector. It takes the following parameter:
+- `selector`: A string representing the selector to locate.
+
+The function uses `await getPage()` to get the current page and locates all elements matching the selector. If no elements are found, it throws an error. It returns a Promise that resolves to a Playwright `TLocator` object containing the located elements.
+
+---
+
+### `evalElement(selector: string, fn: TEvalMethod): Promise<any>`
+
+This asynchronous function evaluates the element that matches the specified selector using a custom evaluation function (`fn`). It takes the following parameters:
+- `selector`: A string representing the selector of the element to evaluate.
+- `fn`: A function that performs the evaluation and returns a value of type `T`.
+
+The function retrieves the current page using `await getPage()` and uses `page.$eval(selector, fn)` to evaluate the element. If the evaluation returns `null`, it throws an error. It returns a Promise that resolves to the result of the evaluation.
+
+---
+
+### `evalAll(selector: string, fn: TEvalMethod): Promise<any>`
+
+This asynchronous function evaluates all elements that match the specified selector using a custom evaluation function (`fn`). It takes the following parameters:
+- `selector`: A string representing the selector of the elements to evaluate.
+- `fn`: A function that performs the evaluation and returns a value of type `T`.
+
+The function retrieves the current page using `await getPage()` and uses `page.$$eval(selector, fn)` to evaluate all matching elements. If the evaluation returns `null`, it throws an error. It returns a Promise that resolves to the result of the evaluation.
+

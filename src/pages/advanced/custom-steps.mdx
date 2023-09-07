@@ -1,7 +1,48 @@
-import { ComingSoon } from '../../components/ComingSoon/ComingSoon'
-import { PurpleText } from '../../components/Text/Text'
+import { YellowText, PurpleText, GrayText, GreenText, RedText } from '../../components/Text/Text'
 
 # <PurpleText>Writing a Custom Step Definitions</PurpleText>
 
 <br/>
-<ComingSoon />
+
+## <PurpleText>Intro</PurpleText>
+
+GobletQA is designed as a no-code testing platform, but there are cases when users may need to execute tasks requiring custom logic. To address this need, GobletQA allows users to write custom step definitions, empowering them to extend the platform's functionality according to their unique testing requirements.
+
+
+<br/>
+
+
+## <PurpleText>Writing Custom Step Definitions</PurpleText>
+
+### <GreenText>Steps and Step Definitions</GreenText>
+
+* GobletQA utilizes the Gherkin syntax to define test scenarios and steps.
+* The steps are linked to a step definition, which is called durring test execution.
+* The step definition must be located in the folder path defined in `goblet.config.js` file.
+   * Any `.ts` or `.js` file located in this path will be loaded prior to tests being executed.
+   * This allows injecting custom steps so they are avalible when the feature files are executed.
+
+### <GreenText>Creating Custom Step Definitions</GreenText>
+* Create a new step definition file in the same directory configured in you `goblet.config.js` file
+   * This defined under the `paths.stepsDir` property
+   * See [Goblet Config](/advanced/goblet-config) section for more information<br/>
+* Write a step definition, GobletQA supports both Typescript and JavaScript.
+* Use GobletQA's helper methods and libraries to interact with the application under test.
+
+### <GreenText>Adding Custom Steps to a Feature File</GreenText>
+
+Once you've written your custom step definitions, you can incorporate them into your feature files. Follow these steps:
+* Open the feature file where you want to use custom steps.
+* Write the custom steps in Gherkin syntax, referencing the step definitions you created.
+* Save the feature file.
+* As long as the step defintion file exists within the directory defined in your `goblet.config.js` file, it will be avalible to all features files within the project.
+   * See [Goblet Config](/advanced/goblet-config) section for more information<br/>
+
+
+<br/>
+
+## <PurpleText>Helper Methods</PurpleText>
+
+GobletQA provides a range of helper methods to simplify the development of custom step definitions. These methods can assist with common test tasks including interacting with the browser, or selecting elements from the active page. Refer to the following documentation pages for a more detailed explination of the available methods:
+   * [Playwright Helpers](/advanced/playwright-helpers)
+   * [Support Helpers](/advanced/support-helpers)

@@ -1,0 +1,136 @@
+import { YellowText, PurpleText, GrayText, GreenText, RedText } from '../../components/Text/Text'
+
+# <PurpleText>Support helpers</PurpleText>
+
+
+* This page describes the methods that can be imported from the `@GTU/Support/helpers` path
+* Example
+
+  ```ts
+    import { Given } from '@GTU/Parkin'
+    import { saveWorldData } from '@GTU/Support/helpers'
+
+    Given(`I save the data`, () => {
+      await saveWorldData(...args)
+    })
+  ```
+
+<br/>
+
+### `greaterLessEqual(count1: number, count2: number, type: string)`
+
+This function compares two numbers (`count1` and `count2`) based on the specified comparison type (`type`). It supports comparisons such as less than, greater than, equal to, less than or equal to, and greater than or equal to. It logs a message and uses `expect` assertions for the comparison. The `type` parameter should be one of the supported comparison types.
+
+---
+
+### `cleanWorldPath(worldPath: string)`
+
+This function cleans the passed-in world path to ensure that `world` or `$world` is not the start of the string. It removes the leading `world` or `$world` if present and returns the cleaned path.
+
+---
+
+### `clearWorldPath(worldPath: string, world: TWorldConfig)`
+
+This function removes the value on the world object at the specified path (`worldPath`). It takes the world object (`world`) and the path to clean. It uses the `cleanWorldPath` function to ensure a valid path.
+
+---
+
+### `saveWorldData(data: Record<string, any>, world: TWorldConfig, worldPath?: string)`
+
+This function saves data to the world object at the specified path (`worldPath`) or uses the default path if not provided. It sets the data on the world object and returns the saved data.
+
+---
+
+### `saveWorldLocator(props: TSaveWorldLocator, ctx?: TStepCtx)`
+
+This function finds an element matching a selector and registers it as the current ancestor. It can also save the element's selector and information to the world object. It takes a `props` object containing the world object (`world`), selector, and world path (`worldPath`). It returns the located element.
+
+---
+
+### `getFromWorldPath(worldPath: string, world: TWorldConfig, fallback?: any)`
+
+This function retrieves data from the specified path (`worldPath`) on the world object (`world`). It supports providing a fallback value if the data does not exist at the specified path.
+
+---
+
+### `getWorldData(world: TWorldConfig, worldPath?: string, fallback?: any)`
+
+This function gets data from the world object at the specified path (`worldPath`) or uses the default and auto-saved paths if not provided. It returns the retrieved data or throws an error if the data is undefined.
+
+---
+
+### `getWorldLocator(world: TWorldConfig, worldPath?: string, fallback?: any)`
+
+This function gets a locator from the world object at the specified path (`worldPath`) or uses the default and auto-saved paths if not provided. It returns the retrieved locator or throws an error if it's undefined.
+
+---
+
+### `compareValues(val1: any, val2: any, type: string)`
+
+This function compares two values (`val1` and `val2`) based on the specified comparison type (`type`). It supports comparisons for whether `val1` contains `val2` or is an exact match. It uses `expect` assertions for the comparison.
+
+---
+
+### `callLocatorMethod(selector: string, method: string, locator?: TLocator, ctx?: TStepCtx)`
+
+This function calls a method (`method`) on a found locator based on the provided selector or locator. It returns the result of calling the method.
+
+---
+
+### `getLocatorAttribute(selector: string, attr: string, locator?: Record<string, any>, ctx?: TStepCtx)`
+
+This function gets an attribute (`attr`) of a locator found using the provided selector or locator. It supports specifying a timeout (`ctx`) for the operation.
+
+---
+
+### `getLocatorProps(selector: string, locator?: TLocator, ctx?: TStepCtx)`
+
+This function retrieves various properties of a locator found using the provided selector or locator. It returns an object containing information about the element, such as its `id`, `role`, `value`, `tagName`, and more.
+
+---
+
+### `getLocatorTagName(selector: string, locator?: TLocator, ctx?: TStepCtx)`
+
+This function gets the tag name of a locator found using the provided selector or locator.
+
+---
+
+### `getLocatorContent(selector: string, locator?: TLocator, ctx?: TStepCtx)`
+
+This function gets the content (text or input value) of a locator found using the provided selector or locator. It determines the content type based on the tag name of the element.
+
+---
+
+### `clickElement(params: TClickEl, ctx?: TStepCtx)`
+
+This function finds an element based on the provided selector or locator, clicks it, and optionally saves the locator information to the world object. It returns the located locator.
+
+---
+
+### `fillInput(props: TFillInput, ctx?: TStepCtx)`
+
+This function finds an input element based on the provided selector or locator, clicks it, clears its value, and then fills it with the specified text. It returns the located locator.
+
+---
+
+### `clearInput(props: TClickEl, ctx?: TStepCtx)`
+
+This function finds an input element based on the provided selector or locator, clicks it, and clears its value.
+
+---
+
+### `typeInput(props: TFillInput, ctx?: TStepCtx)`
+
+This function finds an input element based on the provided selector or locator, clicks it, clears its value, and then types in the specified text. It returns the located locator.
+
+---
+
+### `getLocatorTimeout(ctx?: TStepCtx, percent: number = 99)`
+
+This function calculates the locator timeout based on the provided step context (`ctx`). It ensures that the locator timeout is less than the step's defined timeout to isolate errors. The `percent` parameter allows adjusting the timeout as a percentage of the step timeout.
+
+---
+
+### `getStepTimeout(ctx?: TStepCtx)`
+
+This function gets the configured timeout for a step based on various possible timeout sources, such as step options, environment variables, and global settings.
